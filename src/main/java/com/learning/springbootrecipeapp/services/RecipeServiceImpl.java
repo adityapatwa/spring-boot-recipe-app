@@ -1,12 +1,14 @@
-package com.learning.springbootrecipeapp.service;
+package com.learning.springbootrecipeapp.services;
 
 import com.learning.springbootrecipeapp.domain.Recipe;
 import com.learning.springbootrecipeapp.repositories.RecipeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 public class RecipeServiceImpl implements RecipeService {
 

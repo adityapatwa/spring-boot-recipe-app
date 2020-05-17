@@ -1,4 +1,4 @@
-package com.learning.springbootrecipeapp.service;
+package com.learning.springbootrecipeapp.services;
 
 import com.learning.springbootrecipeapp.domain.Recipe;
 
