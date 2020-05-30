@@ -35,10 +35,18 @@ class RecipeControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
         when(recipeService.findById(1L)).thenReturn(recipe);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/recipe/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/recipes/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/recipe"))
                 .andExpect(model().attribute("recipe", Matchers.is(recipe)));
+    }
+
+    @Test
+    void newRecipe() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/recipes/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("recipe/recipe-form"));
     }
 
 }
