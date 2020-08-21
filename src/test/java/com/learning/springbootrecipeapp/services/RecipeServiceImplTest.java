@@ -1,5 +1,6 @@
 package com.learning.springbootrecipeapp.services;
 
+import com.learning.springbootrecipeapp.commands.RecipeCommand;
 import com.learning.springbootrecipeapp.converters.RecipeCommandToRecipe;
 import com.learning.springbootrecipeapp.converters.RecipeToRecipeCommand;
 import com.learning.springbootrecipeapp.domain.Recipe;
@@ -60,5 +61,25 @@ class RecipeServiceImplTest {
 
         assertNotNull(recipe);
         assertEquals(1L, recipe.getId());
+    }
+
+    @Test
+    void findRecipeCommandById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(1L);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand commandById = recipeService.findCommandById(1L);
+
+//        assertNotNull("Null recipe returned", commandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
     }
 }

@@ -29,16 +29,19 @@
                                 <th>Id</th>
                                 <th>Description</th>
                                 <th>View</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each = "recipe : ${recipes}">
-                                <td th:text = "${recipe.id}"></td>
-                                <td th:text = "${recipe.description}"></td>
-                                <td><a th:href = "@{'/recipes/' + ${recipe.id}}">View</a></td>
-                            </tr>
-                        </table>
-                        </tbody>
+                                <tr th:each = "recipe : ${recipes}">
+                                    <td th:text = "${recipe.id}"></td>
+                                    <td th:text = "${recipe.description}"></td>
+                                    <td><a th:href = "@{'/recipes/' + ${recipe.id}}">View</a></td>
+                                    <td><a th:href = "@{'/recipes/' + ${recipe.id} + '/update'}">Update</a></td>
+                                    <td><a th:href = "@{'/recipes/' + ${recipe.id} + '/delete'}">Delete</a></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
